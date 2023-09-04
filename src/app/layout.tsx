@@ -6,7 +6,9 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'Next 13 boilerplate',
+  title: 'Tem, mas acabou',
+  description:
+    'Te ajudamos a cuidar da sua saúde e da sua geladeira, começando pelas suas listas de compras de mercado.',
 };
 
 export default function RootLayout({
@@ -15,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body className={`${inter.variable} font-sans`}>{children}</body>
     </html>
   );
