@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 
 import { createSupabaseBrowserClient } from '~/utils/supabase';
 
+import RealtimeProduct from './realtime';
 interface SingleProductPageProps {
   params: {
     id: string;
@@ -24,7 +25,7 @@ export default async function SingleProductPage({
   return (
     <div>
       <h1>Single product page</h1>
-      <pre>{JSON.stringify(product, null, 2)}</pre>
+      <RealtimeProduct productFromServer={product} />
     </div>
   );
 }
