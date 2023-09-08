@@ -2,11 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { Database } from '~/types/supabase';
 import { createSupabaseBrowserClient } from '~/utils/supabase';
-
-type Product = Database['public']['Tables']['products']['Row'];
-
 interface RealtimeProductProps {
   productFromServer: Product;
 }

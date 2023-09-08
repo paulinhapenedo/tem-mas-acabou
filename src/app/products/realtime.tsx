@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-import { Database } from '~/types/supabase';
+import { Product } from '~/components/Product/Product';
 import { createSupabaseBrowserClient } from '~/utils/supabase';
-
-type Product = Database['public']['Tables']['products']['Row'];
 
 interface ProductsFromServer {
   productsFromServer: Product[];
