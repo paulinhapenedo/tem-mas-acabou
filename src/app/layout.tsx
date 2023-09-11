@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import './globals.css';
+import SupabaseProvider from './context/supabase-provider';
+import NavBar from './components/NavBar';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -18,7 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.variable} font-sans`}>{children}</body>
+      <body className={`${inter.variable} font-sans`}>
+        <SupabaseProvider>
+          <NavBar />
+          <main id="skip" className="px-4">
+            {children}
+          </main>
+        </SupabaseProvider>
+      </body>
     </html>
   );
 }

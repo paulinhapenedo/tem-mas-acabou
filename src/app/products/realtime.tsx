@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { Product } from '~/components/Product/Product';
-import { createSupabaseBrowserClient } from '~/utils/supabase';
+import { useSupabase } from '~/context/supabase-provider';
 
 interface ProductsFromServer {
   productsFromServer: Product[];
@@ -13,9 +12,10 @@ export default function RealtimeProducts({
   productsFromServer,
 }: ProductsFromServer) {
   const [products, setProducts] = useState(productsFromServer);
+  const { supabase } = useSupabase();
 
   useEffect(() => {
-    const channel = createSupabaseBrowserClient
+    const channel = supabase
       .channel('realtime products')
       .on(
         'postgres_changes',
@@ -31,9 +31,9 @@ export default function RealtimeProducts({
       .subscribe();
 
     return () => {
-      createSupabaseBrowserClient.removeChannel(channel);
+      supabase.removeChannel(channel);
     };
-  }, [products, setProducts]);
+  }, [products, setProducts, supabase]);
 
   return (
     <div>
