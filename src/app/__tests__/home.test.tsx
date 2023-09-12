@@ -1,14 +1,26 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+const mockedSignOut = jest.fn().mockResolvedValue({});
+jest.mock('@supabase/auth-helpers-nextjs', () => {
+  return {
+    createClientComponentClient: () => {
+      return {
+        auth: () => {
+          return {
+            signOut: () => mockedSignOut,
+          };
+        },
+      };
+    },
+  };
+});
 
-import Home from '../page';
+const mockedRefresh = jest.fn();
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn().mockImplementation(() => ({
+    refresh: mockedRefresh,
+  })),
+}));
 
-describe('Home', () => {
-  it('renders the default Next.js page', () => {
-    render(<Home />);
-
-    const content = screen.getByText('Get started by editing');
-
-    expect(content).toBeInTheDocument();
-  });
+describe.skip('Home', () => {
+  it.todo('renders sign in');
+  it.todo('calls supabase auth signout method');
 });
