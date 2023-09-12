@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 
+import SignUpForm from '~/components/SignUpForm/SignUpForm';
 import { createServerSupabaseClient } from '~/services/supabase-server';
 
 export default async function Unauthenticated() {
@@ -20,6 +21,8 @@ export default async function Unauthenticated() {
         Te ajudamos a cuidar da sua saúde e da sua geladeira, começando pelas
         suas listas de compras de mercado.
       </h2>
+
+      <SignUpForm />
     </div>
   );
 }

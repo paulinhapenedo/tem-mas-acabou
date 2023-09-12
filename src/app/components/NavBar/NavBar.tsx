@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { createServerSupabaseClient } from '~/services/supabase-server';
 
 import { SignOutButton } from './SignOutButton';
+import { SignInButton } from './SignInButton';
 
 export default async function NavBar() {
   const supabase = createServerSupabaseClient();
@@ -11,11 +12,11 @@ export default async function NavBar() {
   } = await supabase.auth.getUser();
 
   return (
-    <nav>
+    <nav className="flex flex-shrink-0 flex-nowrap justify-end px-4 pt-6">
       <a href="#skip" className="sr-only focus:not-sr-only">
         Pular para o conteúdo
       </a>
-      {!user && <Link href="/products">Sign in</Link>}
+      {!user && <SignInButton />}
       {user && (
         <>
           <p>Olá, {user.email}</p>

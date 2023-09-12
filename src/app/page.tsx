@@ -11,7 +11,6 @@ export default async function Home() {
 
   if (!session) {
     redirect('/unauthenticated');
-    return null;
   }
 
   return (
