@@ -28,6 +28,7 @@ export default function SignUpForm() {
     // user already exists and has confirmed the email before
     if (data.user?.aud === 'authenticated') {
       setHasError(true);
+      return;
     }
 
     if (error) {

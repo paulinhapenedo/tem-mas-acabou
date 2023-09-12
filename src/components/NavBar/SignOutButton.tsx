@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 
-import { useSupabase } from '~/context/supabase-provider';
-import { cn } from '~/utils/tailwind';
+import { useSupabase } from '../../context/supabase-provider';
+import { cn } from '../../utils/tailwind';
 
 export function SignOutButton() {
   const router = useRouter();
