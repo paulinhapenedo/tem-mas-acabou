@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 import { useSupabase } from '~/context/supabase-provider';
+import { toast } from '~/ui/use-toast';
 
 import { strings } from './strings';
 
@@ -39,7 +40,11 @@ export const useSignInForm = () => {
     }
 
     if (error) {
-      console.log({ error });
+      toast({
+        title: 'Algo deu errado',
+        description: 'Por favor, tente novamente mais tarde.',
+        variant: 'destructive',
+      });
     }
   };
 

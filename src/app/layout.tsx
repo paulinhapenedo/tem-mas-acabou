@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 
 import SupabaseProvider from '~/context/supabase-provider';
 import NavBar from '~/components/NavBar';
+import { Toaster } from '~/ui/toaster';
 
 import './globals.css';
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <main id="skip" className="px-4">
             {children}
           </main>
+          <Toaster />
         </SupabaseProvider>
       </body>
     </html>
