@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 import { createServerSupabaseClient } from '~/services/supabase-server';
+import { SignInForm } from '../SignInForm';
 
 import { SignOutButton } from './SignOutButton';
-import { SignInButton } from './SignInButton';
 
 export default async function NavBar() {
   const supabase = createServerSupabaseClient();
@@ -16,7 +16,7 @@ export default async function NavBar() {
       <a href="#skip" className="sr-only focus:not-sr-only">
         Pular para o conteúdo
       </a>
-      {!user && <SignInButton />}
+      {!user && <SignInForm />}
       {user && (
         <>
           <p>Olá, {user.email}</p>
