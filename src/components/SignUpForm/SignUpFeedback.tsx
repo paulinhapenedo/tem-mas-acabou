@@ -19,8 +19,8 @@ export function SignUpFeedback({
   variant,
 }: SignUpFeedbackProps) {
   const opacityVariants = {
-    hide: 'max-w transition-opacity motion-reduce:transition-none opacity-0',
-    show: 'max-w transition-opacity motion-reduce:transition-none opacity-100',
+    hide: 'md:max-w-[30vw] transition-opacity motion-reduce:transition-none opacity-0',
+    show: 'md:max-w-[30vw] transition-opacity motion-reduce:transition-none opacity-100',
   };
 
   const Icon = useMemo(() => (icon === 'mail' ? Mail : Lock), [icon]);
