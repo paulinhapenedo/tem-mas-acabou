@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 
-import { createSupabaseBrowserClient } from '~/utils/supabase';
+import { createServerSupabaseClient } from '~/services/supabase-server';
 
 import RealtimeProduct from './realtime';
 interface SingleProductPageProps {
@@ -12,7 +12,9 @@ interface SingleProductPageProps {
 export default async function SingleProductPage({
   params: { id },
 }: SingleProductPageProps) {
-  const { data: product } = await createSupabaseBrowserClient
+  const supabase = createServerSupabaseClient();
+
+  const { data: product } = await supabase
     .from('products')
     .select()
     .match({ id })
