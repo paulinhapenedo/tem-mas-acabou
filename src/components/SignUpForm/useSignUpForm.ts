@@ -63,7 +63,7 @@ export const useSignUpForm = () => {
       return;
     }
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: values.email,
       password: values.pwd,
       options: {
@@ -71,13 +71,8 @@ export const useSignUpForm = () => {
       },
     });
 
-    // user already exists and has confirmed the email before
-    if (data.user?.aud === 'authenticated') {
-      setHasError(true);
-      return;
-    }
-
     if (error) {
+      setHasError(true);
       console.log({ error });
     }
 
