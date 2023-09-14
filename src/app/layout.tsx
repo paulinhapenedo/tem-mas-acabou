@@ -10,9 +10,24 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
+  themeColor: '#FECE10',
   title: 'Tem, mas acabou',
   description:
     'Te ajudamos a cuidar da sua saúde e da sua geladeira, começando pelas suas listas de compras de mercado.',
+  icons: [
+    {
+      rel: 'icon',
+      url: '/icon-light.png',
+      type: 'image/png',
+      media: '(prefers-color-scheme: light)',
+    },
+    {
+      rel: 'icon',
+      url: '/icon-dark.png',
+      type: 'image/png',
+      media: '(prefers-color-scheme: dark)',
+    },
+  ],
 };
 
 export default function RootLayout({
