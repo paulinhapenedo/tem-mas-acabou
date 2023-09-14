@@ -24,9 +24,8 @@ export const strings = {
       icon: 'mail',
     },
     privateBeta: {
-      title: 'Ops! 🙈',
-      description:
-        'Esse é um app para estudo, então o registro está limitado. /nDesculpe o inconveniente!',
+      title: 'Desculpe o inconveniente! 🙈',
+      description: `Esse é um app para estudo, então o registro está limitado.`,
       icon: 'lock',
     },
   },

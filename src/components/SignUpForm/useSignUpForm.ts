@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useSupabase } from '~/context/supabase-provider';
+import { getURL } from '~/utils/getRedirectUrl';
 
 import { strings } from './strings';
 
@@ -63,21 +64,16 @@ export const useSignUpForm = () => {
       return;
     }
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: values.email,
       password: values.pwd,
       options: {
-        emailRedirectTo: `${location.origin}/auth/callback`,
+        emailRedirectTo: `${getURL()}auth/callback`,
       },
     });
 
-    // user already exists and has confirmed the email before
-    if (data.user?.aud === 'authenticated') {
-      setHasError(true);
-      return;
-    }
-
     if (error) {
+      setHasError(true);
       console.log({ error });
     }
 

@@ -62,9 +62,9 @@ export default function SignUpForm() {
             )}
           />
           <Button type="submit">{strings.button}</Button>
-          <SignUpFeedback status={showFeedback} {...signUpFeedbackProps} />
         </form>
       </Form>
+      <SignUpFeedback status={showFeedback} {...signUpFeedbackProps} />
     </>
   );
 }
