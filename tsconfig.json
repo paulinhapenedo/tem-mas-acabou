@@ -25,6 +25,7 @@
       "~/types/*": ["./src/types/*"],
       "~/services/*": ["./src/services/*"],
       "~/components/*": ["./src/components/*"],
+      "~/context/*": ["./src/context/*"],
       "~/utils/*": ["./src/utils/*"],
       "~/ui/*": ["./src/ui/*"]
     }

@@ -1,14 +1,11 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+import { createServerSupabaseClient } from '~/services/supabase-server';
 
 import RealtimeProducts from './realtime';
 
 export default async function Products() {
-  const { data } = await createServerComponentClient({
-    cookies,
-  })
-    .from('products')
-    .select();
+  const supabase = createServerSupabaseClient();
+
+  const { data } = await supabase.from('products').select();
 
   if (!data) {
     return (
