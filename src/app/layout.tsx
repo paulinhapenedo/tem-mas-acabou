@@ -40,7 +40,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans`}>
         <SupabaseProvider>
           <NavBar />
-          <main id="skip" className="px-4">
+          <main id="skip" className="px-4 md:px-12">
             {children}
           </main>
           <Toaster />
