@@ -70,7 +70,9 @@ export function useProfileForm({ userData }: ProfileFormProps) {
     async (values: ProfileFormValues) => {
       const avatarFile = values.avatar?.[0];
       const fileExt = avatarFile?.name.split('.').pop();
-      const filePath = fileExt ? `${userData?.id}.${fileExt}` : '';
+      const filePath = fileExt
+        ? `${userData?.id}-${Date.now()}.${fileExt}`
+        : '';
 
       // handle new avatar upload
       if (!!filePath.length && filePath !== userData?.avatar_url) {
