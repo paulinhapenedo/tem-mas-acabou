@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 
 import { useSupabase } from '~/context/supabase-provider';
 import { useToast } from '~/ui/use-toast';
@@ -35,7 +35,6 @@ export interface ProfileFormProps {
 
 export function useProfileForm({ userData }: ProfileFormProps) {
   const { supabase } = useSupabase();
-  const [avatarUrl, setAvatarUrl] = useState<string>();
   const { toast } = useToast();
 
   const form = useForm<ProfileFormValues>({
@@ -45,26 +44,6 @@ export function useProfileForm({ userData }: ProfileFormProps) {
       name: userData?.name || '',
     },
   });
-
-  useEffect(() => {
-    async function downloadImage(path: string) {
-      try {
-        const { data, error } = await supabase.storage
-          .from('avatars')
-          .download(path);
-        if (error) {
-          throw error;
-        }
-
-        const url = URL.createObjectURL(data);
-        setAvatarUrl(url);
-      } catch (error) {
-        console.log('Error downloading image: ', error);
-      }
-    }
-
-    if (userData?.avatar_url) downloadImage(userData?.avatar_url);
-  }, [supabase, userData]);
 
   const onSubmit = useCallback(
     async (values: ProfileFormValues) => {
@@ -133,6 +112,5 @@ export function useProfileForm({ userData }: ProfileFormProps) {
   return {
     form,
     onSubmit,
-    avatarUrl,
   };
 }
