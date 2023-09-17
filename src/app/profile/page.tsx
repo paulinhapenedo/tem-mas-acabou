@@ -1,5 +1,8 @@
 import { ProfileForm } from '~/components/ProfileForm';
-import { createServerSupabaseClient } from '~/services/supabase-server';
+import {
+  createServerSupabaseClient,
+  getUserDetails,
+} from '~/services/supabase-server';
 import { Separator } from '~/ui/separator';
 
 export default async function ProfileScreen() {
@@ -9,21 +12,22 @@ export default async function ProfileScreen() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { data, error, status } = await supabase
-    .from('profiles')
-    .select('username, name, avatar_url, id')
-    .eq('id', user?.id as string)
-    .single();
-
-  if (error && status !== 406) {
-    throw error;
+  // TODO abstract this into an reusable empty state component
+  if (!user) {
+    return (
+      <div>
+        <h1 className="text-2xl font-bold tracking-tight">Empty state</h1>
+      </div>
+    );
   }
+
+  const userData = await getUserDetails(user.id);
 
   return (
     <>
       <h1 className="text-2xl font-bold tracking-tight">Perfil</h1>
       <Separator className="my-6" />
-      <ProfileForm userData={data} />
+      <ProfileForm userData={userData} />
     </>
   );
 }

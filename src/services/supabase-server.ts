@@ -12,3 +12,18 @@ export const createServerSupabaseClient = cache(() => {
 
   return createServerComponentClient<Database>({ cookies: () => cookieStore });
 });
+
+export async function getUserDetails(id: string) {
+  const supabase = createServerSupabaseClient();
+  try {
+    const { data: userDetails } = await supabase
+      .from('profiles')
+      .select('username, name, avatar_url, id')
+      .eq('id', id)
+      .single();
+    return userDetails;
+  } catch (error) {
+    console.error('Error getting user details:', error);
+    return null;
+  }
+}
