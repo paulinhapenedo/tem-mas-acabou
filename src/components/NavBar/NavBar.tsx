@@ -1,12 +1,9 @@
-import { createServerSupabaseClient } from '~/services/supabase-server';
+import { getUserDetails } from '~/services/supabase-server';
 import { SignInForm } from '../SignInForm';
 import { UserMenu } from '../UserMenu';
 
 export default async function NavBar() {
-  const supabase = createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getUserDetails();
 
   return (
     <nav className="flex flex-shrink-0 flex-nowrap justify-end px-4 md:px-12 pt-6 mb-6 lg:mb-0">
@@ -14,7 +11,7 @@ export default async function NavBar() {
         Pular para o conteúdo
       </a>
       {!user && <SignInForm />}
-      {user && <UserMenu user={user} />}
+      {!!user && <UserMenu user={user} />}
     </nav>
   );
 }
