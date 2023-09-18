@@ -2,7 +2,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useSupabase } from '~/context/supabase-provider';
-import { downloadImage } from '~/utils/downloadImage';
+import { downloadImage } from '~/utils';
 
 export function useUserMenu(user: Profile) {
   const router = useRouter();
