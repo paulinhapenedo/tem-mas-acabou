@@ -1,33 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
 import { useCallback } from 'react';
 
 import { useSupabase } from '~/context/supabase-provider';
 import { useToast } from '~/ui/use-toast';
 
 import { strings } from './strings';
-
-const MAX_USERNAME_CHARS = 30;
-const MAX_NAME_CHARS = 20;
-// const MAX_IMAGE_SIZE = 2097152; // 2MB
-
-const profileFormSchema = z.object({
-  username: z
-    .string()
-    .min(3, {
-      message: 'Campo obrigatório com mínimo de 3 caracteres.',
-    })
-    .max(MAX_USERNAME_CHARS, {
-      message: strings.fields.username.error(MAX_USERNAME_CHARS),
-    }),
-  name: z.string().max(MAX_NAME_CHARS, {
-    message: strings.fields.name.error(MAX_NAME_CHARS),
-  }),
-  avatar: z.any().optional(),
-});
-
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+import { ProfileFormValues, profileFormSchema } from './validations';
 
 export interface ProfileFormProps {
   userData: Pick<Profile, 'username' | 'name' | 'avatar_url' | 'id'> | null;
@@ -63,9 +42,7 @@ export function useProfileForm({ userData }: ProfileFormProps) {
         if (uploadError) {
           toast({
             variant: 'destructive',
-            title: 'Erro ao salvar a imagem',
-            description:
-              'Encontramos um erro ao tentar salvar sua imagem. Por favor, tente novamente.',
+            ...strings.toasts.uploadImageError,
           });
 
           return;
@@ -88,14 +65,12 @@ export function useProfileForm({ userData }: ProfileFormProps) {
 
         toast({
           variant: 'success',
-          description: 'Informações atualizadas com sucesso!',
+          ...strings.toasts.updateDataSuccess,
         });
       } catch (error) {
         toast({
           variant: 'destructive',
-          title: 'Erro ao atualizar os dados',
-          description:
-            'Tivemos um problema ao atualizar seus dados. Por favor, tente novamente.',
+          ...strings.toasts.updateDataError,
         });
 
         // if there's any error updating the user profile

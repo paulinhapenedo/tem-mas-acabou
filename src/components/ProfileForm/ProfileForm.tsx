@@ -14,6 +14,7 @@ import { Button } from '~/ui/button';
 
 import { ProfileFormProps, useProfileForm } from './useProfileForm';
 import { strings } from './strings';
+import { MAX_USERNAME_CHARS, MIN_USERNAME_CHARS } from './validations';
 
 export function ProfileForm({ userData }: ProfileFormProps) {
   const { form, onSubmit } = useProfileForm({ userData });
@@ -37,7 +38,10 @@ export function ProfileForm({ userData }: ProfileFormProps) {
                 />
               </FormControl>
               <FormDescription>
-                {strings.fields.username.description}
+                {strings.fields.username.description(
+                  MIN_USERNAME_CHARS,
+                  MAX_USERNAME_CHARS,
+                )}
               </FormDescription>
               <FormMessage />
             </FormItem>
