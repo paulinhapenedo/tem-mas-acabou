@@ -40,6 +40,7 @@ export default function Error({
           width={IMAGE_SIZE}
           height={IMAGE_SIZE}
           alt={strings.altImage}
+          placeholder="blur"
         />
       </div>
       <Button onClick={reset}>{strings.button}</Button>
