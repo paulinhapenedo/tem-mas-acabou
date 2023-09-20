@@ -1,5 +1,6 @@
 'use client';
 
+import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import { useEffect } from 'react';
 
@@ -17,6 +18,8 @@ const strings = {
   button: `Clique aqui para atualizar a página`,
 };
 
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+
 export default function Error({
   error,
   reset,
@@ -30,19 +33,23 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="grid place-content-center md:place-items-center gap-16 h-[85dvh] max-w-prose m-auto">
-      <div>
-        <Typography.H1>{strings.title}</Typography.H1>
-        <Typography.P>{strings.description}</Typography.P>
-        <Image
-          className="mx-auto my-4"
-          src={IMAGE_URL}
-          width={IMAGE_SIZE}
-          height={IMAGE_SIZE}
-          alt={strings.altImage}
-        />
-      </div>
-      <Button onClick={reset}>{strings.button}</Button>
-    </div>
+    <html lang="pt-br">
+      <body className={`${inter.variable} font-sans`}>
+        <main className="grid place-content-center md:place-items-center gap-16 h-[85dvh] max-w-prose m-auto">
+          <div>
+            <Typography.H1>{strings.title}</Typography.H1>
+            <Typography.P>{strings.description}</Typography.P>
+            <Image
+              className="mx-auto my-4"
+              src={IMAGE_URL}
+              width={IMAGE_SIZE}
+              height={IMAGE_SIZE}
+              alt={strings.altImage}
+            />
+          </div>
+          <Button onClick={reset}>{strings.button}</Button>
+        </main>
+      </body>
+    </html>
   );
 }

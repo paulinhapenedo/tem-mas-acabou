@@ -1,9 +1,6 @@
-'use client';
-
 import Image from 'next/image';
-import { useEffect } from 'react';
+import Link from 'next/link';
 
-import { Button } from '~/ui/button';
 import { Typography } from '~/ui/typography';
 
 const IMAGE_URL = '/entei-error.png';
@@ -14,21 +11,10 @@ const strings = {
   description: `Sabemos que pode ser desconsertante estar aqui. Por isso, o Entei está
   aqui para te guiar em segurança para a página inicial.`,
   altImage: `Ilustração do Pokémon Entei em referência ao meme 'Tá tudo bem agora'`,
-  button: `Clique aqui para atualizar a página`,
+  button: `Clique aqui para redirecionar para a página inicial`,
 };
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error;
-  reset: () => void;
-}) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
-
+export default function NotFound() {
   return (
     <div className="grid place-content-center md:place-items-center gap-16 h-[85dvh] max-w-prose m-auto">
       <div>
@@ -42,7 +28,9 @@ export default function Error({
           alt={strings.altImage}
         />
       </div>
-      <Button onClick={reset}>{strings.button}</Button>
+      <Link className="text-foreground underline-offset-4 underline" href="/">
+        {strings.button}
+      </Link>
     </div>
   );
 }
