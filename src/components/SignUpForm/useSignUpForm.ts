@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useSupabase } from '~/context/supabase-provider';
-import { getURL } from '~/utils/getRedirectUrl';
+import { getURL } from '~/utils';
 
 import { strings } from './strings';
 
