@@ -19,9 +19,18 @@ export const profileFormSchema = z.object({
   name: z.string().max(MAX_NAME_CHARS, {
     message: strings.fields.name.error(MAX_NAME_CHARS),
   }),
-  avatar: z.custom<FileList>().refine((file) => file[0].size > MAX_IMAGE_SIZE, {
-    message: strings.fields.avatar.error,
-  }),
+  avatar: z.custom<FileList>().refine(
+    (file) => {
+      if (!file) {
+        return true;
+      }
+
+      return file?.[0].size <= MAX_IMAGE_SIZE;
+    },
+    {
+      message: strings.fields.avatar.error,
+    },
+  ),
 });
 
 export type ProfileFormValues = z.infer<typeof profileFormSchema>;
