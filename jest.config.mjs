@@ -22,6 +22,7 @@ const config = {
     '~/ui/(.*)$': '<rootDir>/src/ui/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+  testPathIgnorePatterns: ['<rootDir>/src/e2e'],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
