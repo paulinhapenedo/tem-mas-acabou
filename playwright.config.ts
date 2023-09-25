@@ -9,7 +9,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env.local') });
 const PORT = process.env.PORT || 3000;
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
-const baseURL = `http://localhost:${PORT}`;
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -23,7 +23,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL,
+    baseURL: BASE_URL,
     trace: 'on-first-retry',
   },
 
@@ -63,8 +63,8 @@ export default defineConfig({
     ? undefined
     : {
         command: 'npm run dev',
-        url: baseURL,
+        url: BASE_URL,
         timeout: 120 * 1000,
-        reuseExistingServer: !process.env.CI,
+        reuseExistingServer: true,
       },
 });
