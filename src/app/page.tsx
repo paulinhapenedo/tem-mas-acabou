@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 
 import { createServerSupabaseClient } from '~/services/supabase-server';
+import { Typography } from '~/ui/typography';
 
 export default async function Home() {
   const supabase = createServerSupabaseClient();
@@ -15,7 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="text-slate-900 text-3xl">Tem, mas acabou</h1>
+      <Typography.H1>Bem vinda!</Typography.H1>
     </>
   );
 }
