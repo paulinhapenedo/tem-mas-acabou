@@ -20,6 +20,8 @@ const config = {
     '~/context/(.*)$': '<rootDir>/src/context/$1',
     '~/utils/(.*)$': '<rootDir>/src/utils/$1',
     '~/ui/(.*)$': '<rootDir>/src/ui/$1',
+    '@supabase/auth-helpers-nextjs':
+      '<rootDir>/src/__tests__/__mocks__/supabaseAuthHelpersMock.ts',
   },
   setupFilesAfterEnv: ['<rootDir>/src/__tests__/jest-setup.js'],
   testPathIgnorePatterns: ['<rootDir>/src/e2e'],
