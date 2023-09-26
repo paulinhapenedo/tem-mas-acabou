@@ -21,7 +21,7 @@ const config = {
     '~/utils/(.*)$': '<rootDir>/src/utils/$1',
     '~/ui/(.*)$': '<rootDir>/src/ui/$1',
   },
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/jest-setup.js'],
   testPathIgnorePatterns: ['<rootDir>/src/e2e'],
 };
 

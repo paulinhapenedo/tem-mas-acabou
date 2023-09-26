@@ -1,5 +1,5 @@
 import { getUserFromSession } from '../supabase-server';
-import { userMock } from '~/__mocks__/user';
+import { userMock } from '~/__tests__/__mocks__/user';
 
 const mockedGetUser = jest
   .fn()
