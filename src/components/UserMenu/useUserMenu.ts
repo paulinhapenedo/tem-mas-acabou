@@ -37,7 +37,7 @@ export function useUserMenu(user: Profile) {
     }
   }, [supabase, user]);
 
-  const avatarFallbackText = user.username?.split('')[0].toUpperCase();
+  const avatarFallbackText = user.username?.split('')[0].toUpperCase() ?? '🐯';
 
   return {
     signOut,
