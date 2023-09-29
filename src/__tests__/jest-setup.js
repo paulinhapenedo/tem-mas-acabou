@@ -27,3 +27,9 @@ beforeEach(() => {
 afterEach(() => {
   onAuthStateChangeStub.mockRestore();
 });
+
+/* mock URL.createObjectURL implementation */
+Object.defineProperty(URL, 'createObjectURL', {
+  writable: true,
+  value: jest.fn(),
+});
