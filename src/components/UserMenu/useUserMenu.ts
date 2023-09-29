@@ -14,6 +14,7 @@ export function useUserMenu(user: Profile) {
 
     if (!error) {
       router.refresh();
+      return;
     }
 
     console.log({ error });
