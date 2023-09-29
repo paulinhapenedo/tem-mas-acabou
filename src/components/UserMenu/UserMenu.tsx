@@ -52,8 +52,14 @@ export function UserMenu({ user }: { user: Profile }) {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={signOut}>
-          {strings.menuOptions.logout}
+        <DropdownMenuItem asChild>
+          <Button
+            variant="noStyle"
+            onClick={signOut}
+            className="w-full justify-start"
+          >
+            {strings.menuOptions.logout}
+          </Button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
