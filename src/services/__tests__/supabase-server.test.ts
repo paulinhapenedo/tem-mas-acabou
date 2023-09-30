@@ -1,33 +1,44 @@
-import { getUserFromSession } from '../supabase-server';
+import { UserResponse } from '@supabase/supabase-js';
+
+import { supabase } from '~/__tests__/__mocks__/supabaseAuthHelpersMock';
 import { userMock } from '~/__tests__/__mocks__/user';
+import { getUserFromSession } from '../supabase-server';
 
-const mockedGetUser = jest
-  .fn()
-  .mockResolvedValue({ data: { user: null }, error: null });
+describe('supabase-server', () => {
+  describe('getUserFromSession', () => {
+    test(`should return null if there's no user data`, async () => {
+      jest
+        .spyOn(supabase.auth, 'getUser')
+        .mockResolvedValue({ data: { user: null } } as UserResponse);
+      const user = await getUserFromSession();
 
-jest.mock('@supabase/auth-helpers-nextjs', () => ({
-  createServerComponentClient: jest.fn().mockImplementation(() => ({
-    auth: {
-      getUser: mockedGetUser,
-    },
-  })),
-}));
-
-describe('supabase-server getUserFromSession', () => {
-  test(`should return null if there's no user data`, async () => {
-    const data = await getUserFromSession();
-
-    expect(data).toBe(null);
-  });
-
-  test(`should return user information from the session if logged`, async () => {
-    mockedGetUser.mockResolvedValue({
-      data: { user: userMock },
-      error: null,
+      expect(user).toBe(null);
     });
 
-    const data = await getUserFromSession();
+    test(`should return null if there's an error`, async () => {
+      jest.spyOn(supabase.auth, 'getUser').mockRejectedValue('User not found');
 
-    expect(data).toMatchObject(userMock);
+      const spyConsole = jest
+        .spyOn(console, 'error')
+        .mockImplementation(() => {});
+
+      const user = await getUserFromSession();
+
+      expect(user).toBe(null);
+      expect(spyConsole).toBeCalledWith(
+        'Error getting user from active session:',
+        'User not found',
+      );
+    });
+
+    test(`should return user information from the session if logged`, async () => {
+      jest
+        .spyOn(supabase.auth, 'getUser')
+        .mockResolvedValue({ data: { user: userMock } } as UserResponse);
+
+      const userResponse = await getUserFromSession();
+
+      expect(userResponse).toMatchObject(userMock);
+    });
   });
 });
