@@ -20,9 +20,12 @@ const config = {
     '~/context/(.*)$': '<rootDir>/src/context/$1',
     '~/utils/(.*)$': '<rootDir>/src/utils/$1',
     '~/ui/(.*)$': '<rootDir>/src/ui/$1',
+    '@supabase/auth-helpers-nextjs':
+      '<rootDir>/src/__tests__/__mocks__/supabaseAuthHelpersMock.ts',
   },
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
-  testPathIgnorePatterns: ['<rootDir>/src/e2e'],
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/jest-setup.js'],
+  testPathIgnorePatterns: ['<rootDir>/src/e2e', '<rootDir>/src/__tests__'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/ui', '<rootDir>/src/__tests__'],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

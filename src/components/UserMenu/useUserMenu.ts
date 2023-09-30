@@ -14,6 +14,7 @@ export function useUserMenu(user: Profile) {
 
     if (!error) {
       router.refresh();
+      return;
     }
 
     console.log({ error });
@@ -37,7 +38,7 @@ export function useUserMenu(user: Profile) {
     }
   }, [supabase, user]);
 
-  const avatarFallbackText = user.username?.split('')[0].toUpperCase();
+  const avatarFallbackText = user.username?.split('')[0].toUpperCase() ?? '🐯';
 
   return {
     signOut,

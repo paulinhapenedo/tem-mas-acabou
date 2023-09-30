@@ -1,5 +1,0 @@
-import '@testing-library/jest-dom';
-
-jest.mock('next/headers', () => ({
-  cookies: jest.fn(),
-}));
