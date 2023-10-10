@@ -26,7 +26,6 @@ export default function NotFound() {
           width={IMAGE_SIZE}
           height={IMAGE_SIZE}
           alt={strings.altImage}
-          placeholder="blur"
         />
       </div>
       <Link className="text-foreground underline-offset-4 underline" href="/">
