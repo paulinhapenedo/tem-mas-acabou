@@ -4,16 +4,17 @@ import Link from 'next/link';
 import { getUserDetails } from '~/services/supabase-server';
 import { SignInForm } from '../SignInForm';
 import { UserMenu } from '../UserMenu';
+import { Separator } from '~/ui/separator';
 
 export default async function NavBar() {
   const user = await getUserDetails();
 
   return (
-    <>
+    <div className="px-4 md:px-12 pb-8">
       <a href="#skip" className="sr-only focus:not-sr-only">
         Pular para o conteúdo
       </a>
-      <div className="flex flex-shrink-0 flex-nowrap align-center justify-between px-4 md:px-12 pt-6 mb-6">
+      <div className="flex flex-shrink-0 flex-nowrap align-center justify-between pt-6 mb-6">
         {!user && <SignInForm />}
         {!!user && (
           <>
@@ -29,6 +30,7 @@ export default async function NavBar() {
           </>
         )}
       </div>
-    </>
+      <Separator />
+    </div>
   );
 }

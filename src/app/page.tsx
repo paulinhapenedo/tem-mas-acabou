@@ -3,7 +3,6 @@ import { redirect } from 'next/navigation';
 import { SidebarMobile, SidebarNav } from '~/components/Sidebar';
 import { createServerSupabaseClient } from '~/services/supabase-server';
 import { Button } from '~/ui/button';
-import { Separator } from '~/ui/separator';
 import { Typography } from '~/ui/typography';
 
 export default async function Home() {
@@ -19,7 +18,6 @@ export default async function Home() {
 
   return (
     <>
-      <Separator className="mb-8" />
       <h1 className="text-2xl font-bold tracking-tight">Bem vinda!</h1>
       <Typography.Lead>O que deseja fazer?</Typography.Lead>
 
