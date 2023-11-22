@@ -19,8 +19,10 @@ export default async function Products() {
       title="Produtos"
       subtitle={`${data?.length} produtos cadastrados`}
     >
-      {showEmptyState && emptyState()}
-      {hasData && <RealtimeProducts productsFromServer={data} />}
+      <div className="pt-4">
+        {showEmptyState && emptyState()}
+        {hasData && <RealtimeProducts productsFromServer={data} />}
+      </div>
     </PageWrapper>
   );
 }
