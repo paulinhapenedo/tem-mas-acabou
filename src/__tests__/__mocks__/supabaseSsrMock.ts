@@ -5,15 +5,12 @@ const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
 
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
 
-export function createPagesBrowserClient() {
+export function createBrowserClient() {
   return supabase;
 }
-export function createServerComponentClient() {
+export function createSupabaseServerClient() {
   return supabase;
 }
-export function createRouteHandlerClient() {
-  return supabase;
-}
-export function createMiddlewareClient() {
+export function createServerClient() {
   return supabase;
 }

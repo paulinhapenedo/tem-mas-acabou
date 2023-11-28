@@ -1,9 +1,9 @@
-import { createServerSupabaseClient } from '~/services/supabase-server';
+import { createSupabaseServerClient } from '~/services/supabase-server';
 
 import RealtimeProducts from './realtime';
 
 export default async function Products() {
-  const supabase = createServerSupabaseClient();
+  const supabase = createSupabaseServerClient();
 
   const { data } = await supabase.from('products').select();
 

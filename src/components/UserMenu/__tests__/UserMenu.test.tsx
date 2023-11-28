@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { userProfileMock } from '~/__tests__/__mocks__/user';
 import { render, screen, waitFor } from '~/__tests__/test-utils';
 import { UserMenu } from '../UserMenu';
-import { supabase } from '~/__tests__/__mocks__/supabaseAuthHelpersMock';
+import { supabase } from '~/__tests__/__mocks__/supabaseSsrMock';
 
 const mockedRefresh = jest.fn();
 jest.mock('next/navigation', () => ({
