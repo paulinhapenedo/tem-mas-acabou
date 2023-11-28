@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { loadEnvConfig } from '@next/env';
 
-import { supabase } from '~/__tests__/__mocks__/supabaseAuthHelpersMock';
+import { supabase } from '~/__tests__/__mocks__/supabaseSsrMock';
 
 loadEnvConfig(process.cwd());
 

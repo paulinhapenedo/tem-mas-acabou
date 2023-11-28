@@ -1,6 +1,8 @@
+/** @jest-environment node */
+
 import { UserResponse } from '@supabase/supabase-js';
 
-import { supabase } from '~/__tests__/__mocks__/supabaseAuthHelpersMock';
+import { supabase } from '~/__tests__/__mocks__/supabaseSsrMock';
 import { userMock } from '~/__tests__/__mocks__/user';
 import { getUserFromSession } from '../supabase-server';
 
@@ -25,7 +27,7 @@ describe('supabase-server', () => {
       const user = await getUserFromSession();
 
       expect(user).toBe(null);
-      expect(spyConsole).toBeCalledWith(
+      expect(spyConsole).toHaveBeenCalledWith(
         'Error getting user from active session:',
         'User not found',
       );
