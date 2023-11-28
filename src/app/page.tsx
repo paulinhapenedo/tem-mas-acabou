@@ -1,12 +1,12 @@
 import { redirect } from 'next/navigation';
 
 import { SidebarMobile, SidebarNav } from '~/components/Sidebar';
-import { createServerSupabaseClient } from '~/services/supabase-server';
+import { createSupabaseServerClient } from '~/services/supabase-server';
 import { Button } from '~/ui/button';
 import { Typography } from '~/ui/typography';
 
 export default async function Home() {
-  const supabase = createServerSupabaseClient();
+  const supabase = createSupabaseServerClient();
 
   const {
     data: { session },
