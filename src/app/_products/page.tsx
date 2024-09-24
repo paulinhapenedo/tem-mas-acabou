@@ -1,4 +1,4 @@
-import { createSupabaseServerClient } from '~/services/supabase-server';
+import { createSupabaseServerClient } from '~/utils/supabase/server';
 
 import RealtimeProducts from './realtime';
 

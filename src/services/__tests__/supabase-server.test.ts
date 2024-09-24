@@ -4,7 +4,7 @@ import { UserResponse } from '@supabase/supabase-js';
 
 import { supabase } from '~/__tests__/__mocks__/supabaseSsrMock';
 import { userMock } from '~/__tests__/__mocks__/user';
-import { getUserFromSession } from '../supabase-server';
+import { getUserFromSession } from '../user';
 
 describe('supabase-server', () => {
   describe('getUserFromSession', () => {

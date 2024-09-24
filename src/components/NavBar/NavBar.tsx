@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getUserDetails } from '~/services/supabase-server';
 import { SignInForm } from '~/components/SignInForm';
 import { UserMenu } from '~/components/UserMenu';
+import { getUserDetails } from '~/services/user';
 import { Separator } from '~/ui/separator';
 
 export default async function NavBar() {

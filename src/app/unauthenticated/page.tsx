@@ -1,19 +1,6 @@
-import { redirect } from 'next/navigation';
-
 import SignUpForm from '~/components/SignUpForm/SignUpForm';
-import { createSupabaseServerClient } from '~/services/supabase-server';
 
 export default async function Unauthenticated() {
-  const supabase = createSupabaseServerClient();
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session) {
-    redirect('/');
-  }
-
   return (
     <div className="grid place-content-center md:place-items-center h-[90dvh] gap-6 max-w-prose m-auto">
       <h1 className="text-4xl md:text-5xl font-extrabold">Tem, mas acabou</h1>

@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
 import { useSupabase } from '~/context/supabase-provider';
 import { toast } from '~/ui/use-toast';
@@ -35,16 +35,18 @@ export const useSignInForm = () => {
       password: values.pwd,
     });
 
-    if (data) {
-      router.refresh();
-    }
-
     if (error) {
       toast({
         title: 'Algo deu errado',
         description: 'Por favor, tente novamente mais tarde.',
         variant: 'destructive',
       });
+
+      return;
+    }
+
+    if (data) {
+      router.refresh();
     }
   };
 

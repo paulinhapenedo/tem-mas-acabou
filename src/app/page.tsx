@@ -1,21 +1,8 @@
-import { redirect } from 'next/navigation';
-
 import { SidebarMobile, SidebarNav } from '~/components/Sidebar';
-import { createSupabaseServerClient } from '~/services/supabase-server';
 import { Button } from '~/ui/button';
 import { Typography } from '~/ui/typography';
 
 export default async function Home() {
-  const supabase = createSupabaseServerClient();
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (!session) {
-    redirect('/unauthenticated');
-  }
-
   return (
     <>
       <h1 className="text-2xl font-bold tracking-tight">Bem vinda!</h1>

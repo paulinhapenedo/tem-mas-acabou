@@ -21,6 +21,7 @@ export const userMock: User = {
       last_sign_in_at: '2023-09-14T22:15:06.998714Z',
       created_at: '2023-09-14T22:15:06.998774Z',
       updated_at: '2023-09-14T22:15:06.998774Z',
+      identity_id: '',
     },
   ],
   created_at: '2023-09-14T22:15:06.996117Z',

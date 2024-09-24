@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 
-import { createSupabaseServerClient } from '~/services/supabase-server';
+import { createSupabaseServerClient } from '~/utils/supabase/server';
 
 import RealtimeProduct from './realtime';
 interface SingleProductPageProps {

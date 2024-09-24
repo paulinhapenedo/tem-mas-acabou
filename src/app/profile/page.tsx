@@ -1,5 +1,5 @@
 import { ProfileForm } from '~/components/ProfileForm';
-import { getUserDetails } from '~/services/supabase-server';
+import { getUserDetails } from '~/services/user';
 import { Separator } from '~/ui/separator';
 
 export default async function ProfileScreen() {
