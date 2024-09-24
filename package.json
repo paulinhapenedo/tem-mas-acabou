@@ -10,7 +10,6 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:ci": "jest --ci",
-    "prepare": "husky install",
     "test:e2e": "playwright test"
   },
   "dependencies": {
